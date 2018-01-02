@@ -3,6 +3,12 @@ body, html {
   height: 100%;
 }
 
+body {
+  background-image: url("./images/starwars.jpg");
+  background-size: cover;
+  color: white;
+}
+
 #app {
   height: 100%;
 }
@@ -11,15 +17,32 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  text-align: center;
   height: 100%;
 }
 
 .info-container {
   display: flex;
   justify-content: space-around;
+  text-align: center;
 }
 
 .bottom-container {
   display: flex;
   justify-content: center;
+}
+
+.spaceship-image {
+  height: 5vw;
+  width: 5vw;
+}
+
+.icon {
+  width: 5vw;
+  height: 5vw;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
 }
