@@ -41,7 +41,7 @@ class Game extends Component {
         let player = this.props.playersReducer[`player${number}`];
     
         if ((player && player.loading) || (!player && number == 1)) {
-          playerComponent = <h1 color='white'>Loading player</h1>;
+          playerComponent = <h1 color='white'>Loading player...</h1>;
         } else if (player) {
           playerComponent = <Player number={number}
                     isComputer={false}
@@ -70,7 +70,7 @@ class Game extends Component {
     
         let changePlayerBtn = null;
         if (!this.state.isGameOver) {
-          changePlayerBtn = <button onClick={() => {
+          changePlayerBtn = <button className="change-button" onClick={() => {
             this.loadPlayers();
           }}>Change Players</button>;
         }
@@ -85,10 +85,14 @@ class Game extends Component {
     
         let playGame = <NavLink
           to={url}
-          disabled={ !playersJoined || gameOngoing }>{this.state.isGameOver ? 'Next Match' : 'Play'}</NavLink>
+          disabled={ !playersJoined || gameOngoing }
+          className="play-button">{this.state.isGameOver ? 'Next Match' : 'Play'}</NavLink>
 
         return (
         <div className="game-container">
+            <div className="winner-container">
+                {winner}
+            </div>
             <div className="info-container">
                 {this.getPlayer(1)}
                 <GameData 

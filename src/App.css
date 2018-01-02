@@ -1,12 +1,33 @@
 body, html {
   margin: 0;
   height: 100%;
+  font-family: 'Helvetica Neue'
 }
 
 body {
   background-image: url("./images/starwars.jpg");
   background-size: cover;
   color: white;
+}
+
+h1 {
+  font-size: 3.5vw;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 3vw;
+  font-weight: 300;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 2vw;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1.4vw;
 }
 
 #app {
@@ -40,9 +61,45 @@ body {
 .icon {
   width: 5vw;
   height: 5vw;
+  margin-right: 2vw;
 }
 
 .info {
   display: flex;
   justify-content: space-around;
+}
+
+.play-button {
+    text-decoration: none;
+    color: white;
+    background-color: orange;
+    padding: 1.8vw 3vw;
+    border-radius: 0.5vw;
+    font-size: 2vw;
+}
+
+.change-button {
+    text-decoration: none;
+    color: white;
+    background-color: lightskyblue;
+    padding: 1vw 2vw;
+    border-radius: 0.5vw;
+    position: fixed;
+    right: 3vw;
+    bottom: 8vw;
+    font-size: 1vw;
+}
+
+.winner-container {
+  margin-top: 10vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+}
+
+.winner-container h1 {
+  font-weight: 100;
+  font-size: 4vw;
+  color: yellowgreen;
 }

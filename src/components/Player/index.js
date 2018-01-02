@@ -6,10 +6,10 @@ import Stats from './Stats'
 
 const Player = props => {
   let gameStats = null;
-  let divStyle = { color: 'red' }
+  let divStyle = { color: '#ee4235' }
 
   if (props.number === 1) {
-    divStyle.color = 'blue'
+    divStyle.color = '#2196f3'
   }
 
   // Game stats should be passed as prop when game is over
@@ -20,8 +20,8 @@ const Player = props => {
   }
     return (
     <div className="container">
-      <h3 style={divStyle}>Player {props.number} </h3>
-      <h2>{props.player.name}</h2>
+      <h2 style={divStyle}>Player {props.number} </h2>
+      <h1>{props.player.name}</h1>
       <p>{props.isComputer ? 'Computer' : 'Human' }</p>
       <div className="spaceship">
         <img src={spaceship} alt="spaceship" className="spaceship-image" />
