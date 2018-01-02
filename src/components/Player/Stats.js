@@ -3,10 +3,10 @@ import React from 'react';
 const Stats = props => {
     return (
         <div className="statsContainer">
-            <h3>4 hours</h3>
-            <h3>4 trips</h3>
-            <p>Speed: 100 KM/H</p>
-            <p>Cargo: 100 KG</p>
+            <h3 style={props.divStyle}>{props.totalTime} hours</h3>
+            <h3 style={props.divStyle}>{props.numberOfTrips} trips</h3>
+            <p>Speed: {props.speed} KM/H</p>
+            <p>Cargo: {props.cargo} KG</p>
         </div>
     );
 };

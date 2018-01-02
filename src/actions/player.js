@@ -1,8 +1,6 @@
-import { LOAD_PLAYERS, GET_PLAYER, PLAY } from './../types/players';
+import { LOAD_PLAYERS, GET_PLAYER, PLAY } from '../actiontypes/player';
 import { gameOngoing, gameFinished } from './game';
-import { Race } from '../Game';
-
-import axios from 'axios';
+import Race from '../Race';
 
 const routeHistory = {};
 
@@ -49,21 +47,22 @@ const getVehicle = (playerIndex, playerData) => {
     }
 
 
-    axios.get(vehicleURL).then(vehicle => {
-        if (vehicle.data.cargo_capacity == 'unknown') {
+      fetch(vehicleURL).then(response => {
+      response.json().then( vehicle => {
+        if (vehicle.cargo_capacity == 'unknown') {
           dispatch(loadPlayer(playerIndex));
           return;
         }
 
-        routeHistory[vehicleURL] = vehicle.data;
+        routeHistory[vehicleURL] = vehicle;
         player.spaceship = {
-          name: vehicle.data.name,
+          name: vehicle.name,
           speed: parseFloat(vehicle.max_atmosphering_speed),
           cargo: parseFloat(vehicle.cargo_capacity)
         };
         dispatch(getPlayer(playerIndex, player));
-      }
-    ).catch(err => console.log('Error:', err));
+      });
+    });
   }
 }
 
@@ -77,12 +76,14 @@ export const loadPlayer = (playerIndex) => {
       return;
     }
 
-    return axios.get(characterURL).then(playerData => {
-        if (!playerData.data.results) {
+    return fetch(characterURL).then(response => {
+      response.json().then( playerData => {
+        if (!playerData.results) {
           return dispatch(loadPlayer(playerIndex));
         }
-        routeHistory[characterURL] = playerData.data;
+        routeHistory[characterURL] = playerData;
         dispatch(getVehicle(playerIndex, playerData));
+      });
     });
   }
 }
@@ -113,7 +114,7 @@ export const play = (gold, distance, player1, player2) => {
   };
 
   return dispatch => {
-    dispatch(gameIsRunning());
+    dispatch(gameOngoing());
     dispatch({
       type: PLAY,
       payload: {

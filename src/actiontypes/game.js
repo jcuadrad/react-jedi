@@ -1,3 +1,3 @@
-export const GAME_STARTED = 'START_GAME';
+export const START_GAME = 'START_GAME';
 export const RESET = 'RESET';
-export const GAME_ENDED = 'END_GAME';
+export const END_GAME = 'END_GAME';
